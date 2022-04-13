@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  This is an appropriate place for user modifications to the web.xml.  
+  Entries from this file will be combined with the default WaveMaker web.xml;
+  the order is not guaranteed.
+
+  Content changes must go between the two tags below.
+--><web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.1" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee                       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    
+     <listener>
+		<listener-class>com.fico.fawb.dmp.integration.configuration.filter.DmpRuntimeFilter</listener-class>
+	</listener>
+
+    <servlet>
+        <!-- this servlet-name for  dmp-component (security service is present) excluded other project services -->
+        <servlet-name>rest</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/project-dmp-base.xml,classpath:securityService.spring.xml,classpath:springapp.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>detectAllHandlerExceptionResolvers</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>rest</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+	
+    <display-name>xFrameTextPreview</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <context-param>
+        <param-name>microServiceName</param-name>
+        <param-value>xFrameTextPreview</param-value>
+    </context-param>
+</web-app>

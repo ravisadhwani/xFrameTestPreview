@@ -1,0 +1,24 @@
+<wm-partial name="topnav" type="topnav">
+    <wm-navbar name="navbar1">
+        <wm-nav name="leftTopLinks" type="navbar" class="navbar-left">
+            <wm-nav-item name="list_home">
+                <wm-anchor caption="Home" name="homeLink" iconclass="wi wi-home" on-click="Actions.goToPage_Main.invoke()"></wm-anchor>
+            </wm-nav-item>
+        </wm-nav>
+        <wm-nav name="rightTopLinks" type="navbar" class="navbar-right ml-md-auto">
+            <wm-nav-item name="list_search">
+                <wm-search name="SearchBar"></wm-search>
+            </wm-nav-item>
+        </wm-nav>
+    </wm-navbar>
+    <wm-navbar name="tenantBar" class="tenant-bar" show="false">
+        <wm-nav type="navbar" class="navbar-right ml-md-auto" name="tenantBar">
+            <wm-nav-item name="nav_item3">
+                <wm-label caption="Tenant List :"></wm-label>
+            </wm-nav-item>
+            <wm-nav-item name="tenant_list">
+                <wm-menu caption="Tenant" autoclose="outsideClick" name="Tenant" icon-class="fico fico-icon-file" type="anchor" dataset="Tenant 1, Tenant 2, Tenant 3"></wm-menu>
+            </wm-nav-item>
+        </wm-nav>
+    </wm-navbar>
+</wm-partial>

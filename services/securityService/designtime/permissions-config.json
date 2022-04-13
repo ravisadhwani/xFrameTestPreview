@@ -1,0 +1,11 @@
+{
+  "resourceMapping" : {
+    "AUDIT_LOG":[
+      "component_approver",
+      "component_deployer",
+      "component_configurer",
+      "component_admin",
+      "everyone"
+    ]
+  }
+}
