@@ -1,0 +1,477 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "2.0",
+    "x-FAWB-VARIABLE" : null,
+    "x-WM-USE_PROXY_FOR_WEB" : true,
+    "x-WM-USE_PROXY_FOR_MOBILE" : true,
+    "x-WM-API_ID" : "d5968bbd-9618-47c6-897d-3483d5147f71",
+    "x-WM-SERVICE_ID" : "dms",
+    "x-FAWB-SERVICE-GROUP" : "dms",
+    "x-WM-SERVICE_TYPE" : "RestService"
+  },
+  "host" : "console.dms.preview.usw2.ficoanalyticcloud.com",
+  "basePath" : "",
+  "tags" : [ {
+    "name" : "RestServiceVirtualController",
+    "description" : "Rest service swagger documentation"
+  } ],
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/dms/invoke/rest/dmp/runtime/components" : {
+      "get" : {
+        "tags" : [ "RestServiceVirtualController" ],
+        "operationId" : "dms_RestServiceVirtualController-invoke",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "showAlternate",
+          "in" : "query",
+          "description" : "showAlternate",
+          "required" : false,
+          "type" : "string",
+          "format" : "string",
+          "x-WM-VARIABLE_KEY" : "",
+          "x-WM-EDITABLE" : false,
+          "x-WM-VARIABLE_TYPE" : "PROMPT"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/RootResponseROOTEntryItem"
+              },
+              "x-WM-IS_LIST" : true
+            }
+          }
+        },
+        "security" : [ {
+          "dmpauth" : [ ]
+        } ],
+        "x-WM-METHOD_NAME" : "invoke",
+        "x-WM-ACCESS_SPECIFIER" : "APP_ONLY"
+      },
+      "x-WM-BASE_PATH" : "/dms/invoke/rest/dmp/runtime/components",
+      "x-WM-TAG" : "RestServiceVirtualController",
+      "x-WM-RELATIVE_PATH" : "",
+      "x-WM-COMPLETE_PATH" : "${dms.scheme}://${dms.host}${dms.basepath}/rest/dmp/runtime/components"
+    }
+  },
+  "securityDefinitions" : {
+    "dmpauth" : {
+      "type" : "dmpauth"
+    }
+  },
+  "definitions" : {
+    "currentRevision" : {
+      "required" : [ "comment", "componentInstanceId", "componentPrototypeRevisionId", "componentRevisionId", "createdBy", "createdTS", "id", "lcmState", "state", "version" ],
+      "properties" : {
+        "lcmState" : {
+          "type" : "string"
+        },
+        "createdBy" : {
+          "type" : "string"
+        },
+        "comment" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "componentInstanceId" : {
+          "type" : "string"
+        },
+        "componentRevisionId" : {
+          "type" : "string"
+        },
+        "state" : {
+          "type" : "string"
+        },
+        "version" : {
+          "type" : "string"
+        },
+        "createdTS" : {
+          "type" : "string"
+        },
+        "componentPrototypeRevisionId" : {
+          "type" : "string"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "dms.currentRevision",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "prototypeUpdate" : {
+      "required" : [ "comment", "componentInstanceCount", "componentPrototypeId", "createdBy", "createdTS", "id", "label", "lastModifiedBy", "lastModifiedTS", "repositoryRevisionId", "state", "version" ],
+      "properties" : {
+        "repositoryRevisionId" : {
+          "type" : "string"
+        },
+        "createdBy" : {
+          "type" : "string"
+        },
+        "lastModifiedBy" : {
+          "type" : "string"
+        },
+        "componentInstanceCount" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "comment" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "label" : {
+          "type" : "string"
+        },
+        "componentPrototypeId" : {
+          "type" : "string"
+        },
+        "state" : {
+          "type" : "string"
+        },
+        "version" : {
+          "type" : "string"
+        },
+        "createdTS" : {
+          "type" : "string"
+        },
+        "lastModifiedTS" : {
+          "type" : "string"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "dms.prototypeUpdate",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "userRoleAssignmentsEntryItem" : {
+      "required" : [ "userRoles" ],
+      "properties" : {
+        "userRoles" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          },
+          "x-WM-IS_LIST" : true
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "dms.userRoleAssignmentsEntryItem",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "instancesEntryItem" : {
+      "required" : [ "alternateInstance", "componentId", "containerProviderId", "containerServiceProviderId", "createdBy", "createdTS", "currentRevision", "description", "engineProfile", "engineType", "env", "envId", "healthCheckRelativeUrl", "id", "internalUrl", "lastModifiedBy", "lastModifiedTS", "multiDatacenterInstance", "name", "rowVersion", "scale", "scaleCount", "secret", "state", "stateDescription", "url" ],
+      "properties" : {
+        "scaleCount" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "componentId" : {
+          "type" : "string"
+        },
+        "healthCheckRelativeUrl" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "engineType" : {
+          "type" : "string"
+        },
+        "scale" : {
+          "type" : "boolean"
+        },
+        "containerServiceProviderId" : {
+          "type" : "string"
+        },
+        "secret" : {
+          "type" : "string"
+        },
+        "internalUrl" : {
+          "type" : "string"
+        },
+        "createdTS" : {
+          "type" : "string"
+        },
+        "alternateInstance" : {
+          "type" : "boolean"
+        },
+        "containerProviderId" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "state" : {
+          "type" : "string"
+        },
+        "rowVersion" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "lastModifiedBy" : {
+          "type" : "string"
+        },
+        "engineProfile" : {
+          "type" : "string"
+        },
+        "multiDatacenterInstance" : {
+          "type" : "boolean"
+        },
+        "envId" : {
+          "type" : "string"
+        },
+        "env" : {
+          "type" : "string"
+        },
+        "url" : {
+          "type" : "string"
+        },
+        "lastModifiedTS" : {
+          "type" : "string"
+        },
+        "currentRevision" : {
+          "$ref" : "#/definitions/currentRevision"
+        },
+        "createdBy" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "stateDescription" : {
+          "type" : "string"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "dms.instancesEntryItem",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "rootInstance" : {
+      "required" : [ "alternateInstance", "componentId", "containerProviderId", "containerServiceProviderId", "createdBy", "createdTS", "currentRevision", "description", "engineProfile", "engineType", "env", "envId", "healthCheckRelativeUrl", "id", "internalUrl", "lastModifiedBy", "lastModifiedTS", "multiDatacenterInstance", "name", "rowVersion", "scale", "scaleCount", "secret", "state", "stateDescription", "url" ],
+      "properties" : {
+        "scaleCount" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "componentId" : {
+          "type" : "string"
+        },
+        "healthCheckRelativeUrl" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "engineType" : {
+          "type" : "string"
+        },
+        "scale" : {
+          "type" : "boolean"
+        },
+        "containerServiceProviderId" : {
+          "type" : "string"
+        },
+        "secret" : {
+          "type" : "string"
+        },
+        "internalUrl" : {
+          "type" : "string"
+        },
+        "createdTS" : {
+          "type" : "string"
+        },
+        "alternateInstance" : {
+          "type" : "boolean"
+        },
+        "containerProviderId" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "state" : {
+          "type" : "string"
+        },
+        "rowVersion" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "lastModifiedBy" : {
+          "type" : "string"
+        },
+        "engineProfile" : {
+          "type" : "string"
+        },
+        "multiDatacenterInstance" : {
+          "type" : "boolean"
+        },
+        "envId" : {
+          "type" : "string"
+        },
+        "env" : {
+          "type" : "string"
+        },
+        "url" : {
+          "type" : "string"
+        },
+        "lastModifiedTS" : {
+          "type" : "string"
+        },
+        "currentRevision" : {
+          "$ref" : "#/definitions/currentRevision"
+        },
+        "createdBy" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "stateDescription" : {
+          "type" : "string"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "dms.rootInstance",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "java.lang.Object" : {
+      "x-WM-FULLY_QUALIFIED_NAME" : "dms.java.lang.Object",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "RootResponseROOTEntryItem" : {
+      "required" : [ "alternateDeploymentEnabled", "alternateDeploymentEnvs", "category", "createdBy", "createdTS", "description", "id", "instances", "kind", "lastModifiedBy", "lastModifiedTS", "lcmTopologyConfigurationId", "lockConfiguration", "multiDatacenterDeploymentEnvs", "name", "organizationId", "prototypeArtifactId", "prototypeGroupId", "prototypeId", "prototypeName", "prototypeUpdate", "roleId", "rootInstance", "rootInstanceId", "rowVersion", "state", "stateDescription", "type", "userRole", "userRoleAssignments", "userRoles" ],
+      "properties" : {
+        "rootInstanceId" : {
+          "type" : "string"
+        },
+        "lockConfiguration" : {
+          "type" : "boolean"
+        },
+        "alternateDeploymentEnvs" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/java.lang.Object"
+          },
+          "x-WM-IS_LIST" : true
+        },
+        "instances" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/instancesEntryItem"
+          },
+          "x-WM-IS_LIST" : true
+        },
+        "lcmTopologyConfigurationId" : {
+          "type" : "string"
+        },
+        "prototypeId" : {
+          "type" : "string"
+        },
+        "rootInstance" : {
+          "$ref" : "#/definitions/rootInstance"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "alternateDeploymentEnabled" : {
+          "type" : "boolean"
+        },
+        "createdTS" : {
+          "type" : "string"
+        },
+        "organizationId" : {
+          "type" : "string"
+        },
+        "prototypeGroupId" : {
+          "type" : "string"
+        },
+        "prototypeUpdate" : {
+          "$ref" : "#/definitions/prototypeUpdate"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "state" : {
+          "type" : "string"
+        },
+        "prototypeArtifactId" : {
+          "type" : "string"
+        },
+        "rowVersion" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "kind" : {
+          "type" : "string"
+        },
+        "roleId" : {
+          "type" : "string"
+        },
+        "lastModifiedBy" : {
+          "type" : "string"
+        },
+        "lastModifiedTS" : {
+          "type" : "string"
+        },
+        "userRoles" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          },
+          "x-WM-IS_LIST" : true
+        },
+        "multiDatacenterDeploymentEnvs" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          },
+          "x-WM-IS_LIST" : true
+        },
+        "createdBy" : {
+          "type" : "string"
+        },
+        "prototypeName" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "userRoleAssignments" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/userRoleAssignmentsEntryItem"
+          },
+          "x-WM-IS_LIST" : true
+        },
+        "stateDescription" : {
+          "type" : "string"
+        },
+        "category" : {
+          "type" : "string"
+        },
+        "userRole" : {
+          "type" : "string"
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "dms.RootResponseROOTEntryItem",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    },
+    "RootResponse" : {
+      "required" : [ "RootResponseROOT" ],
+      "properties" : {
+        "RootResponseROOT" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/RootResponseROOTEntryItem"
+          },
+          "x-WM-IS_LIST" : true
+        }
+      },
+      "x-WM-FULLY_QUALIFIED_NAME" : "dms.RootResponse",
+      "x-WM-TAGS" : [ "RestServiceVirtualController" ]
+    }
+  }
+}

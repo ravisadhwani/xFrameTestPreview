@@ -1,0 +1,8 @@
+{
+  "dms" : {
+    "id" : "dms",
+    "type" : "WEB_SERVICE",
+    "host" : "console.dms.preview.usw2.ficoanalyticcloud.com",
+    "scheme" : "https"
+  }
+}

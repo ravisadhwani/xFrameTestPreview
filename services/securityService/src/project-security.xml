@@ -32,6 +32,8 @@
             </list>
         </property>
         <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="searchSystemEnvironment" value="true"/>
     </bean>
     <bean class="com.wavemaker.runtime.security.config.WMAppSecurityConfig" id="WMAppSecurityConfig">
         <property name="sslConfig" ref="sslConfig"/>
@@ -41,24 +43,24 @@
             <value>${enabled}</value>
         </property>
         <property name="rolesConfig" ref="rolesConfig"/>
+        <property name="permissionConfig" ref="permissionConfig"/>
         <property name="loginConfig" ref="loginConfig"/>
         <property name="rememberMeConfig" ref="rememberMeConfig"/>
         <property name="tokenAuthConfig" ref="tokenAuthConfig"/>
         <property name="csrfConfig" ref="csrfConfig"/>
-        <property name="permissionConfig" ref="permissionConfig"/>
     </bean>
     <bean class="com.wavemaker.commons.model.security.SSLConfig" id="sslConfig">
         <property name="useSSL" value="${general.ssl.enabled}"/>
         <property name="sslPort" value="${general.ssl.port}"/>
         <property name="excludedUrls" value="${general.ssl.excludeUrls}"/>
     </bean>
+    <bean class="com.wavemaker.commons.model.security.SameSiteConfig" id="sameSiteConfig">
+        <property name="sameSiteType" value="LAX"/>
+    </bean>
     <bean class="com.wavemaker.commons.model.security.XSSConfig" id="xssConfig">
         <property name="enforceXssSecurity" value="${general.xss.enabled}"/>
         <property name="policyFile" value="wm-xss-policies.xml"/>
         <property name="xssFilterStrategy" value="ENCODE"/>
-    </bean>
-    <bean id="sameSiteConfig" class="com.wavemaker.commons.model.security.SameSiteConfig">
-        <property name="sameSiteType" value="LAX"/>
     </bean>
     <bean class="com.wavemaker.commons.model.security.CorsConfig" id="corsConfig">
         <property name="enabled" value="${general.cors.enabled}"/>
@@ -96,7 +98,7 @@
     <security:http pattern="/**/wmmobile/**" security="none"/>
     <security:http pattern="/app/prefabs/**" security="none"/>
     <security:http pattern="/services/application/wmProperties.js" security="none"/>
-    <security:http auto-config="false" use-expressions="true" entry-point-ref="appAuthenticationEntryPoint" disable-url-rewriting="true" name="interceptUrlsBean" authentication-manager-ref="authenticationManager" security-context-repository-ref="securityContextRepository">
+    <security:http auto-config="false" use-expressions="true" security-context-repository-ref="securityContextRepository" entry-point-ref="appAuthenticationEntryPoint" disable-url-rewriting="true" name="interceptUrlsBean" authentication-manager-ref="authenticationManager">
         <security:intercept-url pattern="/j_spring_security_logout" access="permitAll"/>
         <security:intercept-url pattern="/pages/Login/**" access="permitAll"/>
         <security:intercept-url pattern="/services/application/i18n/**" access="permitAll"/>
@@ -133,16 +135,14 @@
         <security:authentication-provider ref="rememberMeAuthenticationProvider"/>
     </security:authentication-manager>
     <bean class="com.wavemaker.runtime.security.WMAppAccessDeniedHandler" id="wmAppAccessDeniedHandler"/>
-
-    <bean class="com.wavemaker.runtime.hazelcast.FawbAppHazelcastInstance" id="fawbAppHazelcastInstance" destroy-method = "destroy">
-        <constructor-arg value="${general.hazelcast.service.discovery}" />
+    <bean class="com.wavemaker.runtime.hazelcast.FawbAppHazelcastInstance" destroy-method="destroy" id="fawbAppHazelcastInstance">
+        <constructor-arg value="${general.hazelcast.service.discovery}"/>
     </bean>
-    <bean class="com.wavemaker.runtime.hazelcast.repository.FawbAppHazelcastSessionRepository" id="fawbAppHazelcastSessionRepository" />
-    <bean id="securityContextRepository" class="com.wavemaker.runtime.security.securitycontext.FawbApplicationSecurityContextRepository"/>
+    <bean class="com.wavemaker.runtime.hazelcast.repository.FawbAppHazelcastSessionRepository" id="fawbAppHazelcastSessionRepository"/>
+    <bean class="com.wavemaker.runtime.security.securitycontext.FawbApplicationSecurityContextRepository" id="securityContextRepository"/>
     <bean class="com.wavemaker.runtime.security.csrf.FawbAppCsrfTokenRepository" id="csrfTokenRepository">
         <property name="csrfConfig" ref="csrfConfig"/>
     </bean>
-
     <bean class="com.wavemaker.runtime.security.csrf.CsrfSecurityRequestMatcher" id="csrfSecurityRequestMatcher">
         <property name="csrfConfig" ref="csrfConfig"/>
     </bean>
@@ -188,7 +188,7 @@
     <bean class="org.springframework.security.authentication.RememberMeAuthenticationProvider" id="rememberMeAuthenticationProvider">
         <constructor-arg value="WM_APP_KEY"/>
     </bean>
- <bean class="com.wavemaker.commons.model.security.RememberMeConfig" id="rememberMeConfig">
+    <bean class="com.wavemaker.commons.model.security.RememberMeConfig" id="rememberMeConfig">
         <property name="enabled" value="${general.rememberMe.enabled}"/>
         <property name="tokenValiditySeconds" value="${general.rememberMe.timeOut}"/>
     </bean>
@@ -199,52 +199,47 @@
                 <property name="pageName" value=""/>
                 <property name="timeoutValue" value="${general.session.timeout}"/>
                 <property name="type">
-                    <value type="com.wavemaker.commons.model.security.LoginType">SSO</value>
+                    <value type="com.wavemaker.commons.model.security.LoginType">DIALOG</value>
                 </property>
             </bean>
         </property>
         <property name="type">
-            <value type="com.wavemaker.commons.model.security.LoginType">SSO</value>
+            <value type="com.wavemaker.commons.model.security.LoginType">PAGE</value>
         </property>
     </bean>
     <bean class="com.wavemaker.commons.model.security.CSRFConfig" id="csrfConfig">
         <property name="enforceCsrfSecurity" value="${general.xsrf.enabled}"/>
         <property name="headerName" value="X-WM-XSRF-TOKEN"/>
     </bean>
-   
     <bean class="com.wavemaker.commons.model.security.RolesConfig" id="rolesConfig">
         <property name="roleMap">
             <description>Roles based landing page definitions</description>
             <map key-type="java.lang.String" value-type="com.wavemaker.commons.model.security.RoleConfig">
                 <entry key="component_approver">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig"/>
                 </entry>
                 <entry key="component_deployer">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig"/>
                 </entry>
                 <entry key="component_configurer">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig"/>
                 </entry>
                 <entry key="component_admin">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig"/>
                 </entry>
                 <entry key="everyone">
-                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="Main"/>
-                    </bean>
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig"/>
                 </entry>
             </map>
         </property>
     </bean>
-    <bean id="permissionConfig" class="com.wavemaker.commons.model.security.PermissionConfig">
+    <bean class="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl" id="roleHierarchy">
+        <property name="hierarchy">
+            <value>
+            </value>
+        </property>
+    </bean>
+    <bean class="com.wavemaker.commons.model.security.PermissionConfig" id="permissionConfig">
         <property name="resourceMapping">
             <map key-type="java.lang.String" value-type="java.util.List">
                 <entry key="AUDIT_LOG">
@@ -272,7 +267,6 @@
     <bean class="com.wavemaker.runtime.security.dmp.FawbDmpRememberMeAuthenticationFilter" id="dmpAuthFilter">
         <constructor-arg ref="authenticationManager"/>
         <constructor-arg ref="wmAppDmpRememberMeService"/>
-        <property name="authenticationSuccessHandler"
-                  ref="successHandler" />
+        <property name="authenticationSuccessHandler" ref="successHandler"/>
     </bean>
 </beans>

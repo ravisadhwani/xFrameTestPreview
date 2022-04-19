@@ -20,13 +20,13 @@
       "allowedOrigins" : "*"
     } ]
   },
-  "sameSiteConfig": {
-    "sameSiteType": "LAX"
+  "sameSiteConfig" : {
+    "sameSiteType" : "LAX"
   },
   "frameOptions" : {
     "enabled" : true,
-    "mode" : "SAMEORIGIN",
-    "allowFromUrl" : null
+    "mode" : "ALLOW_FROM",
+    "allowFromUrl" : "https://fawb.dms.int.usw2.ficoanalyticcloud.com/"
   },
   "customFilterList" : null
 }

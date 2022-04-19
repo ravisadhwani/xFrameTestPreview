@@ -1,0 +1,40 @@
+{
+  "endpointAddress" : "https://console.dms.preview.usw2.ficoanalyticcloud.com/com.fico.dmp.manager/rest/dmp/runtime/components",
+  "method" : "GET",
+  "headers" : { },
+  "redirectEnabled" : true,
+  "requestBody" : "",
+  "queryParams" : {
+    "showAlternate" : "true"
+  },
+  "authDetails" : {
+    "type" : "DMPAUTH"
+  },
+  "contentType" : "application/json",
+  "multiParamInfoList" : null,
+  "sampleHttpResponseDetails" : {
+    "statusCode" : 200,
+    "headers" : {
+      "Date" : [ "Wed, 13 Apr 2022 12:30:17 GMT" ],
+      "Content-Type" : [ "application/json" ],
+      "Transfer-Encoding" : [ "chunked" ],
+      "Connection" : [ "keep-alive" ],
+      "adrum_0" : [ "g:9886319a-c3ed-4d5f-a381-8408b1b0c377" ],
+      "adrum_1" : [ "n:fico-test_09ed691a-862c-41af-8d63-f4dd453d323c" ],
+      "x-frame-options" : [ "SAMEORIGIN" ],
+      "adrum_2" : [ "i:982782" ],
+      "adrum_3" : [ "e:50" ],
+      "cache-control" : [ "no-cache" ],
+      "x-envoy-upstream-service-time" : [ "77" ],
+      "X-Xss-Protection" : [ "0" ],
+      "X-Content-Type-Options" : [ "nosniff" ]
+    },
+    "responseBody" : "[{\"prototypeId\":\"hgwxyt480g\",\"id\":\"t0qhwqpl6h\",\"name\":\"BTM Comp\",\"description\":\"\",\"createdBy\":\"AnimeshNag@fico.com\",\"createdTS\":\"2022-03-09T10:32:21.344Z\",\"organizationId\":\"FICO-PTO-TENANT\",\"rootInstanceId\":\"t0qi16uyn5\",\"instances\":[{\"componentId\":\"t0qhwqpl6h\",\"id\":\"t0qi16uyn5\",\"secret\":\"[removed]\",\"name\":\"root\",\"description\":\"\",\"url\":\"https://business-terms-manager-with-dmp-function-t0qi16uyn5.dms.preview.usw2.ficoanalyticcloud.com/\",\"internalUrl\":\"http://business-terms-manager-with-dmp-function-t0qi16uyn5.fico-pto-tenant-design.svc.cluster.local:8080/\",\"healthCheckRelativeUrl\":\"/rest/dmp/component.json\",\"engineType\":\"docker\",\"engineProfile\":\"medium\",\"scale\":false,\"scaleCount\":1,\"containerProviderId\":\"com.fico.dmp.manager.container.service.ContainerServiceProvider\",\"containerServiceProviderId\":\"22y5r1j5en\",\"env\":\"design\",\"envId\":\"design\",\"rowVersion\":4,\"currentRevision\":{\"id\":\"t0qnmlapq9\",\"version\":\"1\",\"createdTS\":\"2022-03-09T10:32:33.755Z\",\"createdBy\":\"AnimeshNag@fico.com\",\"comment\":\"Initial revision\",\"componentInstanceId\":\"t0qi16uyn5\",\"componentPrototypeRevisionId\":\"otykeifszr\",\"componentRevisionId\":\"t0qnmgv34r\",\"state\":\"READY\",\"lcmState\":\"NEW\"},\"createdBy\":\"AnimeshNag@fico.com\",\"createdTS\":\"2022-03-09T10:32:21.639Z\",\"lastModifiedBy\":\"AnimeshNag@fico.com\",\"lastModifiedTS\":\"2022-03-09T10:32:33.765Z\",\"state\":\"READY\",\"stateDescription\":\"Component instance is ready\",\"alternateInstance\":false,\"multiDatacenterInstance\":false}],\"rowVersion\":5,\"multiDatacenterDeploymentEnvs\":[\"production\"],\"lastModifiedBy\":\"AnimeshNag@fico.com\",\"lastModifiedTS\":\"2022-03-09T10:33:53.336Z\",\"state\":\"NEW\",\"stateDescription\":\"Component is ready\",\"alternateDeploymentEnvs\":[],\"lockConfiguration\":false,\"lcmTopologyConfigurationId\":\"1o0epadycw\",\"kind\":\"service\",\"type\":\"Business Terms Manager\",\"category\":\"Analytics\",\"prototypeName\":\"Business Terms Manager (with DMP Function)\",\"prototypeGroupId\":\"com.fico.btm\",\"prototypeArtifactId\":\"btm\",\"roleId\":\"t0qhwqpl6h\",\"alternateDeploymentEnabled\":false,\"prototypeUpdate\":{\"id\":\"3keeeui9k0\",\"label\":\"JOB_NAME: ARCHETYPE_PUSH_AWS_3.18.1 #16\",\"version\":\"2021.2.0.0HF1-RELEASE\",\"createdTS\":\"2022-03-22T15:50:45.813Z\",\"createdBy\":\"dmpadmin_at_fico.com\",\"comment\":\"Updated hgwxyt480g ArchetypeId by user\",\"componentPrototypeId\":\"hgwxyt480g\",\"repositoryRevisionId\":\"3keeeui9k0\",\"state\":\"APPROVED\",\"lastModifiedBy\":\"dmpadmin_at_fico.com\",\"lastModifiedTS\":\"2022-03-22T15:50:49.547Z\",\"componentInstanceCount\":-1},\"userRoles\":[\"COMPONENT_ADMIN\"],\"userRoleAssignments\":[{\"userRoles\":[\"COMPONENT_ADMIN\"]}],\"rootInstance\":{\"componentId\":\"t0qhwqpl6h\",\"id\":\"t0qi16uyn5\",\"secret\":\"[removed]\",\"name\":\"root\",\"description\":\"\",\"url\":\"https://business-terms-manager-with-dmp-function-t0qi16uyn5.dms.preview.usw2.ficoanalyticcloud.com/\",\"internalUrl\":\"http://business-terms-manager-with-dmp-function-t0qi16uyn5.fico-pto-tenant-design.svc.cluster.local:8080/\",\"healthCheckRelativeUrl\":\"/rest/dmp/component.json\",\"engineType\":\"docker\",\"engineProfile\":\"medium\",\"scale\":false,\"scaleCount\":1,\"containerProviderId\":\"com.fico.dmp.manager.container.service.ContainerServiceProvider\",\"containerServiceProviderId\":\"22y5r1j5en\",\"env\":\"design\",\"envId\":\"design\",\"rowVersion\":4,\"currentRevision\":{\"id\":\"t0qnmlapq9\",\"version\":\"1\",\"createdTS\":\"2022-03-09T10:32:33.755Z\",\"createdBy\":\"AnimeshNag@fico.com\",\"comment\":\"Initial revision\",\"componentInstanceId\":\"t0qi16uyn5\",\"componentPrototypeRevisionId\":\"otykeifszr\",\"componentRevisionId\":\"t0qnmgv34r\",\"state\":\"READY\",\"lcmState\":\"NEW\"},\"createdBy\":\"AnimeshNag@fico.com\",\"createdTS\":\"2022-03-09T10:32:21.639Z\",\"lastModifiedBy\":\"AnimeshNag@fico.com\",\"lastModifiedTS\":\"2022-03-09T10:32:33.765Z\",\"state\":\"READY\",\"stateDescription\":\"Component instance is ready\",\"alternateInstance\":false,\"multiDatacenterInstance\":false},\"userRole\":\"COMPONENT_ADMIN\"}]",
+    "convertedResponse" : null
+  },
+  "testApi" : true,
+  "serviceId" : null,
+  "variable" : null,
+  "requestType" : "",
+  "responseType" : ""
+}
